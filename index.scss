@@ -1,0 +1,502 @@
+@import "mq";
+
+*{
+    font-family: 'Work Sans', sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+.blink{
+    &:after{
+        animation: grain 0.3s infinite;
+        content: "";
+        background-image: url("noise.png");
+        width: 200%;
+        height: 200%;
+        opacity: 1;
+        position: fixed;
+        left: -50%;
+        top: -50%;
+    }
+}
+
+.container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+@keyframes grain {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(0,5%) }
+}
+
+.move-left{
+    position: relative;
+    animation: moveFromLeft 3s;
+}
+
+@keyframes moveFromLeft {
+    from {left: -50%;}
+    to {left: 0;}
+}
+
+.move-right{
+    position: relative;
+    animation: moveFromRight 3s;
+}
+
+@keyframes moveFromRight {
+    from {right: -50%;}
+    to {right: 0;}
+}
+
+.header{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    &__logo{
+        margin: 0;
+        width: 40%;
+        font-family: 'Six Caps', sans-serif;
+        font-size: 9vw;
+        font-weight: 300;
+        letter-spacing: 2px;
+        padding-left: 20px;
+    }
+    &__navBox{
+        width: 50%;
+        height: 90%;
+        display: flex;
+        justify-content: space-evenly;
+        .nav{
+            text-decoration: none;
+            opacity: 0.4;
+            transition: all .4s;
+            width: 15%;
+            height: auto;
+            padding: 2%;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            &:hover{
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+        .nav--active{
+            background: #d89312;
+            border-radius: 50%;
+            opacity: 1;
+            pointer-events: none;
+            margin-top: 40px; 
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.page__home{
+    .home__content{
+        width: 100%;
+        height: 450px;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .content__line{
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+            &:nth-child(1){
+                opacity: 1;
+                transition: opacity 0.5s;
+            }
+            &:nth-child(2){
+                justify-content: space-between;
+                transition-property: color;
+                transition-duration: 0.1s;
+                transition-delay: 0.5s;
+            }
+            &:nth-child(3){
+                justify-content: space-between;
+                opacity: 1;
+                transition: opacity 0.5s;
+            }
+            &:nth-child(4){
+                justify-content: flex-end;
+                transition-property: color;
+                transition-duration: 0.1s;
+                transition-delay: 0.5s;
+            }
+            &--text{
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 4vw;
+                font-weight: 100;
+                margin: 10px;
+            }
+        }
+    }
+}
+
+.page__about{    
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    background: white;
+    .about{
+        &__description{
+            width: 100%;
+            padding: 20px;
+            .title{
+                font-family: 'Six Caps', sans-serif; 
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+            .content--wrap{
+                display: flex;
+                justify-content: center;
+                padding-right: 5%;
+                .content{
+                    min-width: 40%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-right: 5%;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    p{
+                        font-size: 20px;
+                    }
+                }
+                .about__portrait{
+                    min-width: 40%;
+                    height: 40%;
+                    overflow: visible;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page__resume{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    background: white;
+    .resume{
+        &__experience{
+            padding-left: 20px;
+            padding-top: 20px;
+            .title{
+                font-family: 'Six Caps', sans-serif; 
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+            .content{
+                position: relative;
+                top: -10px;
+                .firstJob{
+                    display: flex;
+                    justify-content: flex-start;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    .jobTitle{
+                        min-width: 30%;
+                    }
+                    .job{
+                        min-width: 60%;
+                        font-size: 20px;
+                    }
+                }
+                .secondJob{
+                    @extend .firstJob
+                }
+            }
+        }
+        &__education{
+            padding-left: 20px;
+            padding-top: 20px;
+            .title{
+                font-family: 'Six Caps', sans-serif; 
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+            .content{
+                position: relative;
+                top: -10px;
+                .firstSchool{
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    padding-left: 5%;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    .courseName{
+                        min-width: 45%;
+                    }
+                    .courseInfo{
+                        min-width: 46%;
+                        font-size: 20px;
+                    }
+                }
+                .secondSchool{
+                    @extend .firstSchool
+                }
+            }
+        }
+        &__skills{
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+            .title{
+                font-family: 'Six Caps', sans-serif; 
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+            .skills--wrap{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 90%;
+                margin: auto;
+                .skills--block{
+                    min-width: 40%;
+                    opacity: 1;
+                    &:hover > .skills--visible{
+                        opacity: 0;
+                    } 
+                    &:hover > .skills--tools{
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(-10px);
+                        background: whitesmoke;
+                        border-radius: 10px;
+                    }
+                    &:hover > .tools--design{
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(-10px);
+                        background: whitesmoke;
+                        border-radius: 10px;
+                    }
+                    .skills--icon{
+                        display: flex;
+                        justify-content: center;               
+                        .skills--gif{
+                            max-width: 40%;
+                            max-height: 40%;
+                        }
+                    }
+                    .skills--intro{
+                        font-weight: bold;
+                        font-size: 20px;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .skills--tools{
+                        width: 35%;
+                        height: 25vh;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: 0.4s ease;
+                        position: absolute;
+                        left: 8px;
+                        top: 300px;
+                        margin: 0 10%;
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                        .tool{
+                            width: 15%;
+                        }
+                    }
+                    .tools--design{
+                        width: 35%;
+                        height: 25vh;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: 0.4s ease;
+                        position: absolute;
+                        right: 8px;
+                        top: 300px;
+                        margin: 0 10%;
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                        .tool{
+                            width: 15%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page__contact{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    background: white;
+    .contact__content{
+        padding: 20px 20px 0;
+        .title{
+            font-family: 'Six Caps', sans-serif; 
+            font-size: 40px;
+            letter-spacing: 3px;
+        }
+        .contact__details{
+            display: flex;
+            justify-content: flex-start;
+            .contact__description{
+                min-width: 50%;
+                margin-right: 2%;
+                .contact__info{
+                    width: 75%;
+                    padding-left: 0;
+                    list-style: none;
+                    line-height: 30px;
+                    .info{
+                        &--title{
+                            display: inline-block;
+                            min-width: 150px;
+                            font-weight: bold;
+                        }
+                        &--value{
+                            display: inline-block;
+                            color: grey;
+                        }
+                        span{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .contact__form{
+                min-width: 40%;
+                padding-left: 2%;
+                margin-right: 5%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                .contact__block{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 10px;
+                    .box{
+                        width: 70%;
+                    }
+                }
+                .contact--title{
+                    font-size: 20px;
+                    font-weight: bold;
+                    display: inline-block;
+                    min-width: 100px;
+                }
+                .contact--submit{
+                    width: 100%;
+                    height: 25px;
+                    background: #d89312;
+                    border: 0px;
+                    border-radius: 10px;
+                    box-shadow: 1px 2px 10px grey;
+                    display: flex;
+                    justify-content: center;
+                    line-height: 25px;
+                    color: white;
+                    transition: 0.4s ease;
+                    cursor: pointer;
+                    &:hover{
+                        transform: translateY(-10px);
+                    }
+                }
+            }
+        }
+        .contact__map{
+            opacity: 0.8;
+        }
+    }
+}
+
+.page__blog{
+    width: 100%;
+    height: 100vh;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    .blog{
+        &__description{
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .title{
+                font-size: 40px;
+                letter-spacing: 3px;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.page{
+    display: none;
+}
+
+.page--active{
+    display: block;
+}
+
+.optionBox--invisible{
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.footer{
+    display: flex;
+    justify-content: center; 
+    &__socialLink{
+        width: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 2%;
+        a{
+            z-index: 1;
+            img{
+                width: 20px;
+            }
+        }
+    }
+}
