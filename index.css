@@ -542,6 +542,8 @@ body {
   transform: translateY(-10px);
 }
 .page__contact .contact__content .contact__map {
+  max-width: 600px;
+  height: 200px;
   opacity: 0.8;
 }
 
